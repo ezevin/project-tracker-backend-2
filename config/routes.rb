@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       resources :materials
       resources :user_materials
       resources :project_materials
+
+      post '/auth', to: 'auth#create'
+      get '/current_user', to: 'auth#show'
     end
   end
 end
