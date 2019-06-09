@@ -1,7 +1,12 @@
 class Api::V1::ProjectsController < ApplicationController
   def index
     @projects = Project.all
-    render json: @projects.to_json(include: [materials: {only: [:label, :price, :description, :quantity, :image_url, :place_purchased]}])
+    render json: @projects.to_json(include: [materials: {only: [:id, :label, :price, :description, :quantity, :image_url, :place_purchased]}])
+  end
+
+  def show
+    @project = Project.find(params[:id])
+    render json: @project.to_json(include: [materials: {only: [:id, :label, :price, :description, :quantity, :image_url, :place_purchased]}])
   end
 
   def create
@@ -11,6 +16,7 @@ class Api::V1::ProjectsController < ApplicationController
 
   def update
     get_project.update(project_params)
+    # byebug
     render json: @project
   end
 
@@ -18,7 +24,9 @@ class Api::V1::ProjectsController < ApplicationController
     get_project.destroy
     flash[:notice] = "You have deleted this project"
   end
-# private
+
+private
+
   def get_project
     @project = Project.find(params[:id])
   end

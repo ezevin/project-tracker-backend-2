@@ -5,4 +5,5 @@ class UserSerializer < ActiveModel::Serializer
   has_many :materials
   has_many :materials, through: :projects
 
+
 end
