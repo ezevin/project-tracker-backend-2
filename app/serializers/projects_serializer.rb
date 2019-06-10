@@ -5,6 +5,7 @@ class ProjectsSerializer < ActiveModel::Serializer
   has_many :researches
   has_many :to_do_lists
   has_many :materials
+  has_many :notes
 
 
 end

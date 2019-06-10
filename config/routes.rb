@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :project_materials
       resources :researches
       resources :to_do_lists
+      resources :notes
 
       post '/auth', to: 'auth#create'
       get '/current_user', to: 'auth#show'

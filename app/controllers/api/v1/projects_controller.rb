@@ -1,12 +1,12 @@
 class Api::V1::ProjectsController < ApplicationController
   def index
     @projects = Project.all
-    render json: @projects.to_json(include: [materials: {only: [:id, :label, :price, :description, :quantity, :image_url, :place_purchased]}, researches: {only: [:id, :image]}, to_do_lists: {only: [:id, :item, :complete]}])
+    render json: @projects.to_json(include: [materials: {only: [:id, :label, :price, :description, :quantity, :image_url, :place_purchased]}, researches: {only: [:id, :image]}, to_do_lists: {only: [:id, :item, :complete, :process_pic]}, notes: {only: [:id, :note]}])
   end
 
   def show
     @project = Project.find(params[:id])
-    render json: @project.to_json(include: [materials: {only: [:id, :label, :price, :description, :quantity, :image_url, :place_purchased]}, researches: {only: [:id, :image]}, to_do_lists: {only: [:id, :item, :complete]}])
+    render json: @project.to_json(include: [materials: {only: [:id, :label, :price, :description, :quantity, :image_url, :place_purchased]}, researches: {only: [:id, :image]}, to_do_lists: {only: [:id, :item, :complete, :process_pic]}, notes: {only: [:id, :note]}])
   end
 
   def create

@@ -11,6 +11,7 @@ class Api::V1::ToDoListsController < ApplicationController
     end
 
     def update
+
         @todo = ToDoList.find(params[:id])
         @todo.update(todolist_params)
         # byebug
@@ -24,7 +25,7 @@ class Api::V1::ToDoListsController < ApplicationController
   private
 
     def todolist_params
-        params.require(:to_do_list).permit(:project_id, :item, :complete)
+        params.require(:to_do_list).permit(:project_id, :item, :complete, :process_pic)
     end
 
 end

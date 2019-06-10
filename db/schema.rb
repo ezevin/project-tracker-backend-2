@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_10_145338) do
+ActiveRecord::Schema.define(version: 2019_06_10_210217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,15 @@ ActiveRecord::Schema.define(version: 2019_06_10_145338) do
     t.string "label"
     t.float "price"
     t.text "description"
-    t.string "image_url"
+    t.string "image_url", default: "https://image.shutterstock.com/image-vector/empty-background-style-png-blank-450w-676832590.jpg"
     t.string "place_purchased"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.integer "project_id"
+    t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_145338) do
     t.boolean "complete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "process_pic", default: "https://image.shutterstock.com/image-vector/empty-background-style-png-blank-450w-676832590.jpg"
   end
 
   create_table "user_materials", force: :cascade do |t|
@@ -73,7 +81,7 @@ ActiveRecord::Schema.define(version: 2019_06_10_145338) do
     t.string "username"
     t.string "password_digest"
     t.string "name"
-    t.string "profile_picture"
+    t.string "profile_picture", default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
     t.integer "age"
     t.text "about_me"
     t.datetime "created_at", null: false
