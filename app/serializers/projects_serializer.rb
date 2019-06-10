@@ -3,6 +3,7 @@ class ProjectsSerializer < ActiveModel::Serializer
 
   belongs_to :user
   has_many :researches
+  has_many :to_do_lists
   has_many :materials
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_09_215046) do
+ActiveRecord::Schema.define(version: 2019_06_10_145338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2019_06_09_215046) do
     t.string "label"
     t.float "price"
     t.text "description"
-    t.float "quantity"
     t.string "image_url"
     t.string "place_purchased"
     t.datetime "created_at", null: false
@@ -31,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_06_09_215046) do
     t.integer "material_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -53,11 +53,20 @@ ActiveRecord::Schema.define(version: 2019_06_09_215046) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "to_do_lists", force: :cascade do |t|
+    t.integer "project_id"
+    t.string "item"
+    t.boolean "complete", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_materials", force: :cascade do |t|
     t.integer "user_id"
     t.integer "material_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity"
   end
 
   create_table "users", force: :cascade do |t|
