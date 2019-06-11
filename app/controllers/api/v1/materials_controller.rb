@@ -1,7 +1,12 @@
 class Api::V1::MaterialsController < ApplicationController
   def index
     @materials = Material.all
-    render json: @materials.to_json
+    render json: @materials.to_json(include: [user_materials: {only: [:id, :quantity, :material_id, :user_id]}, project_materials: {only: [:id, :quantity, :material_id, :project_id]}])
+  end
+
+  def show
+    @material = Material.find(params[:id])
+    render json: @material.to_json(include: [user_materials: {only: [:id, :quantity, :material_id, :user_id]}, project_materials: {only: [:id, :quantity,:material_id, :project_id]}])
   end
 
   def create
@@ -12,7 +17,7 @@ class Api::V1::MaterialsController < ApplicationController
 
     # add that material to that users usermaterials
     # byebug
-    @user.materials << @material #-> UserMaterial.create()
+    UserMaterial.create(user_id: params[:user_id], material_id: @material.id, quantity: params[:quantity])
 
     render json: @material
   end
@@ -26,7 +31,10 @@ class Api::V1::MaterialsController < ApplicationController
   # end
 
   def update
-    get_material.update(material_params)
+    @material = Material.find(params[:id])
+    # byebug
+    @material.update(material_params)
+  
     # byebug
     render json: @material
   end
@@ -43,6 +51,6 @@ class Api::V1::MaterialsController < ApplicationController
   end
 
   def material_params
-      params.require(:material).permit(:label, :price, :description, :quantity, :image_url, :place_purchased)
+      params.require(:material).permit(:label, :price, :description, :image_url, :place_purchased)
   end
 end
