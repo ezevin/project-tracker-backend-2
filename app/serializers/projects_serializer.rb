@@ -1,5 +1,5 @@
 class ProjectsSerializer < ActiveModel::Serializer
-  attributes :id, :title, :start_date, :due_date, :budget, :finished, :details, :finished_image, :created_at, :materials
+  attributes :id, :title, :start_date, :due_date, :budget, :finished, :details, :finished_image, :created_at, :materials, :updated_at
 
   belongs_to :user
   has_many :researches

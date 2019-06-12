@@ -32,7 +32,7 @@ private
   end
 
   def project_params
-      params.require(:project).permit(:title, :user_id, :start_date, :due_date, :budget, :finished, :details, :finished_image)
+      params.require(:project).permit(:title, :user_id, :start_date, :due_date, :budget, :finished, :details, :finished_image, :updated_at)
   end
 
 end
