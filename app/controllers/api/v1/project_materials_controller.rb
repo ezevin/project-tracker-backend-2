@@ -5,6 +5,11 @@ class Api::V1::ProjectMaterialsController < ApplicationController
     render json: @pm
   end
 
+  def show
+    @pm = ProjectMaterial.find(params[:id])
+    render json: @pm
+  end
+
   def create
     @pm = ProjectMaterial.create(pm_params)
     # byebug
