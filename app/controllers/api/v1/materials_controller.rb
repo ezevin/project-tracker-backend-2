@@ -13,13 +13,9 @@ class Api::V1::MaterialsController < ApplicationController
 
   def create
     @material = Material.create(material_params)
-    # create the material
-    @user = User.find(params[:user_id])
-    # find the user
+    # @user = User.find(params[:user_id])
 
-    # add that material to that users usermaterials
-    # byebug
-    UserMaterial.create(user_id: params[:user_id], material_id: @material.id, quantity: params[:quantity])
+    # UserMaterial.create(user_id: params[:user_id], material_id: @material.id, quantity: params[:quantity])
 
     render json: @material
   end
@@ -36,13 +32,13 @@ class Api::V1::MaterialsController < ApplicationController
     @material = Material.find(params[:id])
     # byebug
 
-    if (params[:quantity])
-      @user = current_user
-      @user_material = UserMaterial.find_by(user_id: @user.id, material_id: @material.id)
-      @user_material.update(quantity: params[:quantity])
-    else
+    # if (params[:quantity])
+    #   @user = curr_user
+    #   @user_material = UserMaterial.find_by(user_id: @user.id, material_id: @material.id)
+    #   @user_material.update(quantity: params[:quantity])
+    # else
       @material.update(material_params)
-    end
+    # end
 
 
     # byebug

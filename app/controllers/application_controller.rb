@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
   end
 
   def token
-    request.headers['Authenticate']
+    request.headers['Authorization']
   end
 #
   def decode_token
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def current_user
+  def curr_user
     @user ||= User.find_by(id: id_from_token)
   end
 

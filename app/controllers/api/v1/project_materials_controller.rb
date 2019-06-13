@@ -11,8 +11,15 @@ class Api::V1::ProjectMaterialsController < ApplicationController
   end
 
   def create
+    # @project.create(project_params)
     @pm = ProjectMaterial.create(pm_params)
-    # byebug
+    #
+    # @pm.quantity # 5
+    # # @user_materials = curr_user.user_materials.find_by(material_id: pm_params[:material_id])
+    # @user_materials # user_id 1 material_id 5 quantity 10 (material name is plastic)
+    # new_quantity = @user_materials.quantity - @pm.quantity
+    # @user_materials.update(quantity: new_quantity)
+    # # byebug
     render json: @pm
   end
 

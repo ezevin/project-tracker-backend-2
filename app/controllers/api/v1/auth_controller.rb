@@ -17,8 +17,8 @@ class Api::V1::AuthController < ApplicationController
     # id = decoded["id"]
     # user = User.find_by(id: id)
 
-    if current_user
-      render json: {id: current_user.id, username: current_user.username}
+    if curr_user
+      render json: {id: curr_user.id, username: curr_user.username}
     else
       render json: {error: "Could not authenticate"}, status: 401
     end

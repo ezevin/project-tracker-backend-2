@@ -25,6 +25,20 @@ class Api::V1::ProjectsController < ApplicationController
     flash[:notice] = "You have deleted this project"
   end
 
+  # def create_project_material
+  #   # need project_id, quantity, material_id, send the token (purpose to auth route and find user)
+  #   @pm = ProjectMaterial.create(pm_params)
+  #   byebug
+  #
+  #   @pm.quantity # 5
+  #   @user_material = curr_user.user_materials.find_by(material_id: pm_params[:material_id])
+  #   # @user_material # user_id 1 material_id 5 quantity 10 (material name is plastic)
+  #   new_quantity = @user_materials.quantity - @pm.quantity
+  #   @user_material.update(quantity: new_quantity)
+  #   # byebug
+  #   render json: {projectMaterial: @pm, userMaterial: @user_material }
+  # end
+
 private
 
   def get_project
@@ -35,4 +49,7 @@ private
       params.require(:project).permit(:title, :user_id, :start_date, :due_date, :budget, :finished, :details, :finished_image, :updated_at)
   end
 
+  # def pm_params
+  #     params.require(:project_material).permit(:project_id, :material_id, :quantity)
+  # end
 end
