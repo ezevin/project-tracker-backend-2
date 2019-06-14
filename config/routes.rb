@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :researches
       resources :to_do_lists
       resources :notes
+      resources :inventories
 
       post '/auth', to: 'auth#create'
       get '/current_user', to: 'auth#show'

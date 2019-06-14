@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_165301) do
+ActiveRecord::Schema.define(version: 2019_06_14_184032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "inventories", force: :cascade do |t|
+    t.integer "project_id"
+    t.string "label"
+    t.float "price", default: 1.0
+    t.text "description"
+    t.string "image_url", default: "https://image.shutterstock.com/image-vector/empty-background-style-png-blank-450w-676832590.jpg"
+    t.string "place_purchased"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "materials", force: :cascade do |t|
     t.string "label"
@@ -49,7 +60,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_165301) do
     t.float "budget"
     t.boolean "finished", default: false
     t.text "details"
-    t.string "finished_image"
+    t.string "finished_image", default: "https://image.shutterstock.com/image-vector/empty-background-style-png-blank-450w-676832590.jpg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
