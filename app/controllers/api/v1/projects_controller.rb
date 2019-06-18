@@ -15,7 +15,8 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def update
-    get_project.update(project_params)
+    @project = Project.find(params[:id])
+    @project.update(project_params)
     # byebug
     render json: @project
   end

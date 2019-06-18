@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_14_184032) do
+ActiveRecord::Schema.define(version: 2019_06_18_174813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2019_06_14_184032) do
     t.float "budget"
     t.boolean "finished", default: false
     t.text "details"
-    t.string "finished_image", default: "https://image.shutterstock.com/image-vector/empty-background-style-png-blank-450w-676832590.jpg"
+    t.string "finished_image", default: "https://images-na.ssl-images-amazon.com/images/I/51UW1849rJL._SX466_.jpg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
