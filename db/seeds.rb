@@ -31,3 +31,6 @@ um2 = UserMaterial.create(user_id: 1 , material_id: 2)
 #ProjectMaterials
 pm1 = ProjectMaterial.create(project_id: 1 , material_id: 1)
 pm2 = ProjectMaterial.create(project_id: 1 , material_id: 2)
+
+#Tool
+scissor = Tool.create(user_id: 1, label: "craft scissors", category: "craft supplies", price: 5, description:"scissors for crafting", image_url: "https://upload.wikimedia.org/wikipedia/commons/7/76/Pair_of_scissors_with_black_handle%2C_2015-06-07.jpg", place_purchased: "Michael's")
