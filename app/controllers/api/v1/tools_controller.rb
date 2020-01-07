@@ -11,6 +11,8 @@ class Api::V1::ToolsController < ApplicationController
 
     def create
       @tool = Tool.create(tool_params)
+      # @user = User.find(params[:user_id])
+
       render json: @tool
     end
 
