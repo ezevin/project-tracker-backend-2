@@ -11,7 +11,8 @@ Rails.application.routes.draw do
       resources :to_do_lists
       resources :notes
       resources :inventories
-
+      resources :tools
+      
       post '/auth', to: 'auth#create'
       get '/current_user', to: 'auth#show'
 
